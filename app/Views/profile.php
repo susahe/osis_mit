@@ -2,29 +2,34 @@
 	<div class="row">
 		<div class="col-12 cols-sm8 offset-sm2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white form-wrapper">
 			<div class="container">
-				<h3> Register </h3>
+				<h3> <? $user['firstname'].' '.user['lastname']?> </h3>
+				<?php if (session()->get('sucess')): ?>
+				<div class="alert alert-success" role="alert">
+						<?= session()->get('sucess')?>
+					</div>
+							<?php endif; ?>
 				<hr>
-				<form class="" action="/register" method="post">
+				<form class="" action="/profile" method="post">
 					<div class="row">
 
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="firstname"> First Name</label>
-								<input type="text" class="form-control" name ="firstname" id="firstname" value="<?= set_value('firstname');?>" placeholder="Enter your first Name">
+								<input type="text" class="form-control" name ="firstname" id="firstname" value="<?= set_value('firstname',$user['firstname']);?>" placeholder="Enter your first Name">
 							</div>
 						</div>
 
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="lastname"> Last Name </label>
-								<input type="text" class="form-control" name ="lastname" id="lastname" value="<?= set_value('lastname');?>">
+								<input type="text" class="form-control" name ="lastname" id="lastname" value="<?= set_value('lastname',$user['lastname']);?>">
 							</div>
 						</div>
 
 						<div class="col-12">
 							<div class="form-group">
 								<label for="email"> Email address </label>
-								<input type="text" class="form-control" name ="email" id="email" value="<?= set_value('email');?>">
+								<input type="text" class="form-control" name ="email" readonly id="email" value="<?=$user['email'];?>">
 							</div>
 						</div>
 
@@ -63,11 +68,9 @@
 						<?php endif; ?>
 					</div>
 					<div class ="row">
-						<button type="submit" class="col-12 btn btn-primary">Register </button>
+						<button type="submit" class="col-12 btn btn-primary">Update </button>
 					</div>
-							<div class="col-12-sm-8 text-right">
-								<a href="/"> Already have  account</a>
-							</div>
+
 
 
 				</form>

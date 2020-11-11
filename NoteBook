@@ -1,0 +1,89 @@
+
+$db = \Config\Database::connect();
+$data = array(
+   'firstname' => "Sumudu",
+   'lastname' => "Virat",
+);
+
+$query = $db->query("insert into  users(firstname,lastname) values('sumudu','sara')");
+var_dump( $query);
+
+This is the way of testing conneciton in CodeIgniter
+
+
+
+These are important save
+//$query = $db->query("insert into  users(firstname,lastname) values('bala','sara')");
+//	$model->insert($newdata);
+
+
+
+This is how this check
+
+<?php namespace App\Validation;
+use App\Models\UserModel;
+
+
+
+class UserRules {
+  public function validateUser(string $str, string $fields, array $data)
+  {
+  //  echo var_dump($data);
+
+    $model = new UserModel();
+    $user = $model->where('email',$data['email'])
+          ->first();
+    if (!$user)
+      return false;
+    //  echo var_dump($data['password']);
+    //  echo var_dump($user);
+      echo var_dump($user['password']);
+      echo var_dump($data['password']);
+      echo var_dump($user['email']);
+      echo var_dump($data['email']);
+      echo var_dump(password_verify($data['password'],$user['password']));
+     return password_verify($data['password'],$user['password']);
+      // if ($data['password']==$user['password']){
+      //   return true;
+      // }
+      // else{
+      //   return false;
+      // }
+      //return true;
+  }
+
+
+}
+
+
+
+class UserRules {
+  public function validateUser(string $str, string $fields, array $data):bool
+  {
+$db = \Config\Database::connect();
+$query = $db->query('SELECT password FROM users  LIMIT 1');
+$row   = $query->getRowArray();
+//echo $row['password'];
+
+    $model = new UserModel();
+    $user = $model->where('email',$data['email'])
+          ->first();
+    $s = password_hash( '123456',PASSWORD_DEFAULT);
+    $k = trim($user['password']);
+    echo $s;
+    echo "<br/>";
+    echo $k;
+
+  //  echo var_dump($user['password']);
+  //  echo var_dump($data);
+    if (!$user)
+      return false;
+
+
+      return password_verify($data['password'],$user['password']);
+
+
+  }
+
+
+}

@@ -39,8 +39,8 @@ class Users extends BaseController
 						->first();
 
 				$this->setUserSession($user);
-				echo var_dump($this->setUserSession($user));
-			  return redirect()->to('dashboard');
+			//	echo var_dump($this->setUserSession($user));
+			  return redirect()->to('/dashboard');
 		 }
 		}
 		echo view('templates/header',$data);

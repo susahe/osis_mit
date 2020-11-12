@@ -17,28 +17,29 @@
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="lastname"> Last Name </label>
-								<input type="text" class="form-control" name ="lastname" id="lastname" value="<?= set_value('lastname');?>">
+								<input type="text" class="form-control" name ="lastname" id="lastname" value="<?= set_value('lastname');?>" placeholder="Enter your Last Name">
+
 							</div>
 						</div>
 
 						<div class="col-12">
 							<div class="form-group">
 								<label for="email"> Email address </label>
-								<input type="text" class="form-control" name ="email" id="email" value="<?= set_value('email');?>">
+								<input type="text" class="form-control" name ="email" id="email" value="<?= set_value('email');?>" placeholder="Enter your Email">
 							</div>
 						</div>
 
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="password"> Password </label>
-								<input type="password" class="form-control" name ="password" id="passwd" value="">
+								<input type="password" class="form-control" name ="password" id="passwd" value="" placeholder="Enter Password ">
 							</div>
 						</div>
 
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="password"> Confirm Password </label>
-								<input type="password" class="form-control" name ="cpassword" id="cpasswd" value="">
+								<input type="password" class="form-control" name ="cpassword" id="cpasswd" value="" placeholder="Confirm Passwordnhj">
 							</div>
 						</div>
 

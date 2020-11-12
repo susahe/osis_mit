@@ -155,9 +155,9 @@ if ($this->request->getPost('password')!=''){
 
 
 		//	echo var_dump($newdata);
-			$model->update(session()->get('id'),$newdata);
-
-
+			//$model->update(session()->get('id'),$newdata);
+		//	$model->update($newdata['idusers'], $newdata);
+			$model->save($newdata);
 			session()->setFlashdata('sucess', 'Sucessfully Updated');
 			return redirect()->to('/profile');
 		 }

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-12 cols-sm8 offset-sm2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white form-wrapper">
 			<div class="container">
-				<h3> <? $user['firstname'].' '.user['lastname']?> </h3>
+				<h3> <?= $user['firstname'].' '.$user['lastname']?> </h3>
 				<?php if (session()->get('sucess')): ?>
 				<div class="alert alert-success" role="alert">
 						<?= session()->get('sucess')?>

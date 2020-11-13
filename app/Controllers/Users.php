@@ -44,7 +44,7 @@ class Users extends BaseController
 		 }
 		}
 		echo view('templates/header',$data);
-		echo view('templates/nav');
+		//echo view('templates/nav');
 		echo view("login");
   	    	echo view("templates/footer");
 
@@ -109,7 +109,7 @@ class Users extends BaseController
 		 }
 		}
 		echo view('templates/header',$data);
-		echo view('templates/nav');
+		//echo view('templates/nav');
 		echo view("register");
   	echo view("templates/footer");
 
@@ -164,7 +164,7 @@ if ($this->request->getPost('password')!=''){
 		}
 		$data['user']=$model->where('idusers',session()->get('id'))->first();
 		echo view('templates/header',$data);
-		echo view('templates/nav');
+		echo view('templates/sidebar');
 		echo view("profile");
 		echo view("templates/footer");
 

@@ -32,8 +32,13 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Users::index',['filter'=>'noauth']);
 $routes->get('logout', 'Users::logout');
-$routes->match(['get','post'],'register', 'Users::register',['filter'=>'noauth']);
+$routes->match(['get','post'],'register', 'Users::register',['filter'=>'auth']);
+$routes->match(['get','post'],'createstudent', 'Students::createstudent',['filter'=>'noauth']);
+$routes->match(['get','post'],'verifycertificate', 'Certificate::verifycertificate',['filter'=>'noauth']);
 $routes->match(['get','post'],'profile', 'Users::profile',['filter'=>'auth']);
+$routes->match(['get','post'],'students', 'Students::index',['filter'=>'auth']);
+$routes->match(['get','post'],'createcourse', 'Course::createcourse',['filter'=>'auth']);
+$routes->match(['get','post'],'courses', 'Course::index',['filter'=>'auth']);
 $routes->get('dashboard', 'Dashboard::index',['filter'=>'auth']);
 /**
  * --------------------------------------------------------------------

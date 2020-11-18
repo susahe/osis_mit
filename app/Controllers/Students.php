@@ -1,76 +1,21 @@
 <?php namespace App\Controllers;
-use App\Models\UserModel;
+use App\Models\StudentModel;
+use CodeIgniter\I18n\Time;
 
-class Users extends BaseController
+class Students extends BaseController
 {
 
 	// login
 	public function index()
 	{
-		helper('form');
-		$data = [];
+		$model = new StudentModel();
+		$data['students']= $model->findAll();
+		//	echo var_dump($data);
+		return  view("students/students_view",$data);
 
-		helper('form');
-
-		if ($this->request->getMethod()=='post')
-		{
-			$rules=[
-
-				'email'=> 'required|min_length[6]|max_length[50]|valid_email',
-				'password'=> 'required|min_length[8]|max_length[255]|validateUser[email,password]',
-
-			];
-			$errors=[
-				'password'=> [
-					'validateUser'=> 'Email or Password don\'t match',
-
-				]
-
-			];
-		 if (! $this->validate($rules,$errors)){
-
-			$data['validation']= $this->validator;
-		}
-		 else
-			{
-				$model = new UserModel();
-
-				$user= $model->where('email',$this->request->getVar('email'))
-						->first();
-
-				$this->setUserSession($user);
-			//	echo var_dump($this->setUserSession($user));
-			  return redirect()->to('/dashboard');
-		 }
-		}
-
-		return  view("login",$data);
-
-
-
-	//--------------------------------------------------------------------
 }
-	// Register4
 
-	private function setUserSession($user){
-
-		$data=[
-			'id'=>$user['idusers'],
-			'firstname'=>$user['firstname'],
-			'lastname'=>$user['lastname'],
-				'email'=>$user['email'],
-			'isLogedIn' => true,
-			'loginUser'=>$user['role'],
-
-		];
-
-		session()->set($data);
-
-		return true;
-
-	}
-
-	public function register()
+	public function createstudent()
 	{
 		$data=[];
 		helper('form');
@@ -78,11 +23,17 @@ class Users extends BaseController
 		if ($this->request->getMethod()=='post')
 		{
 			$rules=[
-				'firstname'=> 'required|min_length[3]|max_length[20]',
+				'firstname'=> 'required|min_length[3]|max_length[30]',
 				'lastname'=> 'required|min_length[3]|max_length[20]',
-				'email'=> 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email],',
-				'password'=> 'required|min_length[8]|max_length[255]',
-				'cpassword'=> 'matches[password]',
+				'certname'=> 'required|min_length[3]|max_length[20]',
+				'gender'=> 'required|min_length[3]|max_length[20]',
+				'role'=> 'required|min_length[3]|max_length[20]',
+				'dateofbirth'=> 'required|min_length[3]|max_length[20]|valid_date',
+				'nic'=> 'required|min_length[10]|max_length[12]',
+					'hometel'=> 'required|min_length[10]|max_length[10]|valid_phone_number[hometel]',
+						'mobile'=> 'required|min_length[10]|max_length[10]|valid_phone_number[mobile]',
+				'email'=> 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+
 			];
 		 if (! $this->validate($rules)){
 
@@ -91,25 +42,37 @@ class Users extends BaseController
 		 else
 		  {
 
-		  $model = new UserModel();
+		  $model = new StudentModel();
 			$newdata = [
 
-				'email' => $this->request->getVar('email'),
-				'password' => $this->request->getVar('password'),
-			  'role' => $this->request->getVar('role'),
+
+
+
 			  'firstname' => $this->request->getVar('firstname'),
 			  'lastname' => $this->request->getVar('lastname'),
+				'certname'=> $this->request->getVar('certname'),
+				'gender'=> $this->request->getVar('gender'),
+				'role'=> $this->request->getVar('role'),
+				'dateofbirth'=> $this->request->getVar('dateofbirth'),
+				'nic'=> $this->request->getVar('nic'),
+					'hometel'=> $this->request->getVar('hometel'),
+						'mobile'=> $this->request->getVar('mobile'),
+										'email' => $this->request->getVar('email'),
 			];
 		//	echo var_dump($newdata);
+		$myTime = new Time('now');
+		$time = Time::parse($myTime);
 			$model->save($newdata);
+			$user_id = $model->getInsertID();
 
+			$message = "Sucessfuly Registred your Pre Registration Id is ".$time->getYear().$user_id."It was send to your email";
 			$session= session();
-			$session->setFlashdata('sucess', 'Sucessful Registraiton');
-			return redirect()->to('/dashboard');
+			$session->setFlashdata('sucess', $message);
+			return redirect()->to('/');
 		 }
 		}
 
-		return  view("register",$data);
+		return  view("students/application",$data);
 
 
 

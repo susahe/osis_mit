@@ -58,27 +58,19 @@
                    <li class="nav-item <?=($uri->getSegment(1)=='profile' ? 'active' : null )?>"">
                      <a class="nav-link" href="/profile">Profile</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='courses' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/courses">Courses</a>
-                   </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='createcourse' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/createcourse">Create Course</a>
-                   </li>
+
+
                    <li class="nav-item <?=($uri->getSegment(1)=='teachers' ? 'active' : null )?>"">
                      <a class="nav-link" href="/teachers">Teaachers</a>
                    </li>
                    <li class="nav-item <?=($uri->getSegment(1)=='studens' ? 'active' : null )?>"">
                      <a class="nav-link" href="/students">Students</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='grades' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/grades">Grades</a>
-                   </li>
+
                    <li class="nav-item <?=($uri->getSegment(1)=='groups' ? 'active' : null )?>"">
                      <a class="nav-link" href="/groups">Groups</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='schedules' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/schedules">Schedules</a>
-                   </li>
+                  
                  </ul>
 
                  <ul class="navbar-nav ml-auto">
@@ -100,12 +92,7 @@
                    <li class="nav-item <?=($uri->getSegment(1)=='createcourse' ? 'active' : null )?>"">
                      <a class="nav-link" href="/createcourse">Create Course</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='teachers' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/teachers">Teaachers</a>
-                   </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='studens' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/students">Students</a>
-                   </li>
+
                    <li class="nav-item <?=($uri->getSegment(1)=='grades' ? 'active' : null )?>"">
                      <a class="nav-link" href="/grades">Grades</a>
                    </li>
@@ -130,25 +117,10 @@
                    <li class="nav-item <?=($uri->getSegment(1)=='profile' ? 'active' : null )?>"">
                      <a class="nav-link" href="/profile">Profile</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='courses' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/courses">Courses</a>
-                   </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='createcourse' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/createcourse">Create Course</a>
-                   </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='teachers' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/teachers">Teaachers</a>
-                   </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='studens' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/students">Students</a>
-                   </li>
                    <li class="nav-item <?=($uri->getSegment(1)=='grades' ? 'active' : null )?>"">
                      <a class="nav-link" href="/grades">Grades</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='groups' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/groups">Groups</a>
-                   </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='schedules' ? 'active' : null )?>"">
+                 <li class="nav-item <?=($uri->getSegment(1)=='schedules' ? 'active' : null )?>"">
                      <a class="nav-link" href="/schedules">Schedules</a>
                    </li>
                  </ul>
@@ -166,16 +138,12 @@
                    <li class="nav-item <?=($uri->getSegment(1)=='profile' ? 'active' : null )?>"">
                      <a class="nav-link" href="/profile">Profile</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='courses' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/courses">Courses</a>
-                   </li>
-                  
+
+
                    <li class="nav-item <?=($uri->getSegment(1)=='grades' ? 'active' : null )?>"">
                      <a class="nav-link" href="/grades">Grades</a>
                    </li>
-                   <li class="nav-item <?=($uri->getSegment(1)=='groups' ? 'active' : null )?>"">
-                     <a class="nav-link" href="/groups">Groups</a>
-                   </li>
+
                    <li class="nav-item <?=($uri->getSegment(1)=='schedules' ? 'active' : null )?>"">
                      <a class="nav-link" href="/schedules">Schedules</a>
                    </li>

@@ -83,10 +83,16 @@
 							 <div class="form-group">
 							    <label for="role">System Role</label>
 							    <select class="form-control form-control-lg" id="role" name='role'>
-							      <option class="col-12">Student</option>
-
+							      <option class="col-12">Student Students</option>
+										<option class="col-12">Student Leavers</option>
 							    </select>
 							  </div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<label for="pname"> Parent Name </label>
+								<input type="text" class="form-control" name ="pname" id="pname" value="<?= set_value('pname');?>" placeholder="Enter Garian Name">
+							</div>
 						</div>
 						<?php if (isset($validation)): ?>
 						<div class="col-12">
@@ -94,14 +100,13 @@
 								<?= $validation->listErrors(); ?>
 							</div>
 						</div>
+
+
 						<?php endif; ?>
 					</div>
 					<div class ="row">
 						<button type="submit" class="col-12 btn btn-primary">Register </button>
 					</div>
-							<div class="col-12-sm-8 text-right">
-								<a href="/"> Already have  account</a>
-							</div>
 
 
 				</form>

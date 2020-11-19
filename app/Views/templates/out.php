@@ -5,7 +5,8 @@
 
     <!-- Navbar -->
     <?= $this->include('templates/nav') ?>
-
+<div class="container-fluid">
+<div class="row  mb-2">
 
         <!-- Side bar -->
         <?php if (session()->get('isLogedIn')): ?>
@@ -17,7 +18,8 @@
 
         <?= $this->renderSection('content') ?>
 
-
+</div>
+</div>
 
 
 

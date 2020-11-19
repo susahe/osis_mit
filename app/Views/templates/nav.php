@@ -40,9 +40,7 @@
         <li class="nav-item <?=($uri->getSegment(1)=='profile' ? 'active' : null )?>"">
           <a class="nav-link" href="/profile">Profile</a>
         </li>
-        <li class="nav-item <?=($uri->getSegment(1)=='createcourse' ? 'active' : null )?>"">
-          <a class="nav-link" href="/createcourse">Create Course</a>
-        </li>
+
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item ">
@@ -106,7 +104,7 @@
         </li>
       </ul>
       <?php else:?>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav nav-right">
 
       <li class="nav-item <?=($uri->getSegment(1)=='' ? 'active' :null )?>"">
         <a class="nav-link" href="/">Login</a>

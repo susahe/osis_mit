@@ -7,15 +7,8 @@
           <?= session()->get('sucess')?>
         </div>
       <?php endif; ?>
-                  <div class="inner">
-                    <p class="d-flex flex-column text-right">
-                          <i class="ion ion-android-arrow-up text-success"></i> <h3>6</h3>
-                    <span class="font-weight-bold">
+      <?= $this->include('components/dascomponents') ?>
 
-                    </span>
-                    <span class="text-muted"><a class="btn btn-primary" href="/students">NEW APPLICATIONS</a></span>
-                  </p>
-                </div>
 </div>
 </div>
 <?= $this->endSection() ?>

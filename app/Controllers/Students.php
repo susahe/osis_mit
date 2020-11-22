@@ -38,14 +38,14 @@ public function slug_view($slug=null){
 			$rules=[
 				'firstname'=> 'required|min_length[3]|max_length[30]',
 				'lastname'=> 'required|min_length[3]|max_length[20]',
-				'certname'=> 'required|min_length[3]|max_length[20]',
+				'certname'=> 'required|min_length[3]|max_length[255]',
 				'gender'=> 'required|min_length[3]|max_length[20]',
 				'role'=> 'required|min_length[3]|max_length[20]',
 				'dateofbirth'=> 'required|min_length[3]|max_length[20]|valid_date',
 				'nic'=> 'required|min_length[10]|max_length[12]',
 					'hometel'=> 'required|min_length[10]|max_length[10]|valid_phone_number[hometel]',
 						'mobile'=> 'required|min_length[10]|max_length[10]|valid_phone_number[mobile]',
-				'email'=> 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+				'email'=> 'required|min_length[6]|max_length[255]|valid_email|is_unique[users.email]',
 
 			];
 		 if (! $this->validate($rules)){
@@ -161,8 +161,8 @@ public function send_mail($e_mail,$preregid)
         $email = \Config\Services::email();
         $email->setTo($e_mail);
 				$email->setFrom('mithardware@gmail.com');
-				$email->setSubject("Subject".$preregid);
-			 $email->setMessage("message".$preregid);
+				$email->setSubject("Application has submited Successfully with pre-registraion id".$preregid);
+			 $email->setMessage("Your Application Successfully Submited and Your Pre Registred id is".$preregid."Plase keep this with you for futrue refrence and 'Your Application Sttaus is '");
 				if ($email->send())
 				{
             return  'Email successfully sent';

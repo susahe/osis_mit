@@ -1,24 +1,20 @@
 
+
 <?= $this->include('templates/header') ?>
-
-
+<?= $this->include('templates/nav') ?>
 
     <!-- Navbar -->
-    <?= $this->include('templates/nav') ?>
-<div class="container-fluid">
-<div class="row  mb-2">
 
-        <!-- Side bar -->
-        <?php if (session()->get('isLogedIn')): ?>
-          <?= $this->include('templates/sidebar') ?>
-        <?php endif; ?>
+<div class="container t-m">
+
+
 
 
         <!--body Section content -->
 
         <?= $this->renderSection('content') ?>
 
-</div>
+
 </div>
 
 

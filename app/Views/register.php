@@ -1,10 +1,6 @@
 <?= $this->extend('templates/main') ?>
 <?= $this->Section('content') ?>
 
-<div role="main" class="col-md ml-sm-auto col-lg-10 pt-3 px-4">
-
-	<div class="d-flex justify-cotnet-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-
 				<form class="" action="/register" method="post">
 					<div class="row">
 
@@ -67,10 +63,9 @@
 					<div class ="row">
 						<button type="submit" class="col-12 btn btn-primary">Register </button>
 					</div>
-							
+
 
 
 				</form>
-			</div>
-		</div>
+
 <?= $this->endSection() ?>

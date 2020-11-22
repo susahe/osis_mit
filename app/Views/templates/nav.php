@@ -104,7 +104,7 @@
         </li>
       </ul>
       <?php else:?>
-    <ul class="navbar-nav nav-right">
+    <ul class="navbar-nav ">
 
       <li class="nav-item <?=($uri->getSegment(1)=='' ? 'active' :null )?>"">
         <a class="nav-link" href="/">Login</a>

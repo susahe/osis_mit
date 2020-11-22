@@ -1,7 +1,7 @@
 
 <?= $this->extend('/templates/out') ?>
 <?= $this->Section('content') ?>
-<div class="container-fluid">
+<div class="container">
 			<h3> Certificate Verfication </h3>
 			<hr>
 			<?php if (session()->get('sucess')): ?>

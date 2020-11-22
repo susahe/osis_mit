@@ -22,7 +22,7 @@ class Users extends BaseController
 			];
 			$errors=[
 				'password'=> [
-					'validateUser'=> 'Email or Password don\'t match',
+					'validateUser'=> 'Email or Password don \'t match',
 
 				]
 
@@ -44,7 +44,7 @@ class Users extends BaseController
 		 }
 		}
 
-		return  view("login",$data);
+		return  view("users/login",$data);
 
 
 

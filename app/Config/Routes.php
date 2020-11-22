@@ -40,9 +40,12 @@ $routes->match(['get','post'],'students', 'Students::index',['filter'=>'auth']);
 $routes->match(['get','post'],'createcourse', 'Course::createcourse',['filter'=>'auth']);
 $routes->match(['get','post'],'courses', 'Course::index',['filter'=>'auth']);
 $routes->get('dashboard', 'Dashboard::index',['filter'=>'auth']);
+$routes->get('slug_view/(:segment)', 'Students::slug_view/$1',['filter'=>'auth']);
+$routes->get('(:any)', 'Students::slug_view/$1',['filter'=>'auth']);
+$routes->get('email', 'Students::send_mail');
 /**
  * --------------------------------------------------------------------
- * Additional Routing
+ * Additional Routingsssss
  * --------------------------------------------------------------------
  *
  * There will often be times that you need additional routing and you

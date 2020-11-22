@@ -15,6 +15,19 @@ class Students extends BaseController
 
 }
 
+
+public function slug_view($slug=null){
+	$model = new StudentModel();
+		$data['student'] = $model->getStudent($slug);
+
+		if (empty($data['student']))
+	 {
+			 throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: '. $slug);
+	 }
+
+	     $data['title'] = $data['student']['certname'];
+	return  view("students/student_slug_view",$data);
+}
 	public function createstudent()
 	{
 		$data=[];
@@ -65,9 +78,14 @@ class Students extends BaseController
 			$model->save($newdata);
 			$user_id = $model->getInsertID();
 
-			$message = "Sucessfuly Registred your Pre Registration Id is ".$time->getYear().$user_id."It was send to your email";
+			$gmail =$newdata['email'];
+			$preregid = $time->getYear().$user_id;
+			$email_message=$this->send_mail($gmail,$preregid);
+			$message = "Sucessfuly Registred your Pre Registration Id is".$preregid.$email_message;
+
 			$session= session();
 			$session->setFlashdata('sucess', $message);
+
 			return redirect()->to('/');
 		 }
 		}
@@ -111,9 +129,9 @@ class Students extends BaseController
 
 			];
 
-if ($this->request->getPost('password')!=''){
-	$newdata['password']= $this->request->getPost('password');
-}
+			if ($this->request->getPost('password')!=''){
+				$newdata['password']= $this->request->getPost('password');
+			}
 
 
 		//	echo var_dump($newdata);
@@ -130,12 +148,37 @@ if ($this->request->getPost('password')!=''){
 		return view("profile",$data);
 
 
-	}
+}
 
-	public function logout(){
+public function student_accept()
+{
+
+}
+
+
+public function send_mail($e_mail,$preregid)
+{
+        $email = \Config\Services::email();
+        $email->setTo($e_mail);
+				$email->setFrom('mithardware@gmail.com');
+				$email->setSubject("Subject".$preregid);
+			 $email->setMessage("message".$preregid);
+				if ($email->send())
+				{
+            return  'Email successfully sent';
+        }
+				else
+				{
+            $data = $email->printDebugger(['headers']);
+            return $data;
+        }
+}
+
+
+public function logout()
+{
 		session()->destroy();
 		return redirect()->to('/');
-
-	}
+}
 
 }

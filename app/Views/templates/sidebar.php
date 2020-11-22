@@ -3,7 +3,7 @@
 
  ?>
 
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar t-m">
 
    <aside id="sidebar">
        <header class="navbar-header">
@@ -70,7 +70,7 @@
                    <li class="nav-item <?=($uri->getSegment(1)=='groups' ? 'active' : null )?>"">
                      <a class="nav-link" href="/groups">Groups</a>
                    </li>
-                  
+
                  </ul>
 
                  <ul class="navbar-nav ml-auto">

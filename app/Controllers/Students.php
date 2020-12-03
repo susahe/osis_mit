@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 use App\Models\StudentModel;
+use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 
 class Students extends BaseController
@@ -28,6 +29,63 @@ public function slug_view($slug=null){
 	     $data['title'] = $data['student']['certname'];
 	return  view("students/student_slug_view",$data);
 }
+
+
+	public function register_student(){
+		$data=[];
+		helper('form');
+
+		if ($this->request->getMethod()=='post')
+		{
+			$rules=[
+				'firstname'=> 'required|min_length[3]|max_length[20]',
+				'lastname'=> 'required|min_length[3]|max_length[20]',
+				'email'=> 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email],',
+				'password'=> 'required|min_length[8]|max_length[255]',
+				'cpassword'=> 'matches[password]',
+			];
+		 if (! $this->validate($rules)){
+
+		 	$data['validation']= $this->validator;
+		}
+		 else
+		  {
+
+		  $model = new UserModel();
+			$newdata = [
+
+				'email' => $this->request->getVar('email'),
+				'password' => $this->request->getVar('password'),
+			  'role' => $this->request->getVar('role'),
+			  'firstname' => $this->request->getVar('firstname'),
+			  'lastname' => $this->request->getVar('lastname'),
+			];
+		//	echo var_dump($newdata);
+			$model->save($newdata);
+			$user_id = $model->getInsertID();
+
+
+			$myTime = new Time('now');
+			$time = Time::parse($myTime);
+			$preregid = $time->getYear().$user_id;
+			$gmail =$newdata['email'];
+
+			$email_message=$this->send_mail($gmail,$preregid);
+			$message = "Sucessfuly Registred your Pre Registration Id is".$preregid.$email_message;
+
+			$session= session();
+			$session->setFlashdata('sucess', $message);
+			return redirect()->to('/');
+		 }
+		}
+
+		return  view("register",$data);
+
+
+
+	}
+
+
 	public function createstudent()
 	{
 		$data=[];
@@ -169,7 +227,8 @@ public function send_mail($e_mail,$preregid)
         }
 				else
 				{
-            $data = $email->printDebugger(['headers']);
+            //$data = $email->printDebugger(['headers']);
+					$data ='Cant connect E-mail Error';
             return $data;
         }
 }

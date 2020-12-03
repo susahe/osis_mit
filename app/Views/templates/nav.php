@@ -109,11 +109,14 @@
       <li class="nav-item <?=($uri->getSegment(1)=='' ? 'active' :null )?>"">
         <a class="nav-link" href="/">Login</a>
       </li>
-      <li class="nav-item <?=($uri->getSegment(1)=='studentapplication' ? 'active' : null )?>"">
-        <a class="nav-link" href="/createstudent">Aplply for Course</a>
+      <li class="nav-item <?=($uri->getSegment(1)=='register_student' ? 'active' : null )?>"">
+        <a class="nav-link" href="/register_student">Aplply for Course</a>
       </li>
       <li class="nav-item <?=($uri->getSegment(1)=='verifycertificate' ? 'active' : null )?>"">
         <a class="nav-link" href="/verifycertificate">Certicate Verification</a>
+      </li>
+      <li class="nav-item <?=($uri->getSegment(1)=='course_view' ? 'active' : null )?>"">
+        <a class="nav-link" href="/course_view">Course View</a>
       </li>
     </ul>
   <?php endif;?>

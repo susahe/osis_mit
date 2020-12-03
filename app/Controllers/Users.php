@@ -8,7 +8,7 @@ class Users extends BaseController
 	public function index()
 	{
 		helper('form');
-		$data = [];
+		$data['title'] = "Users";
 
 		helper('form');
 
@@ -44,7 +44,7 @@ class Users extends BaseController
 		 }
 		}
 
-		return  view("users/login",$data);
+		return  view("users/login");
 
 
 

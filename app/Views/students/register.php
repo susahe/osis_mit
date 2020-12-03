@@ -1,10 +1,7 @@
-<?= $this->extend('templates/out') ?>
+<?= $this->extend('templates/main') ?>
 <?= $this->Section('content') ?>
-<div class="row">
-	<div class="col-12 cols-sm8 offset-sm2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white form-wrapper">
-		<div class="container">
-			<h3> Application  </h3>
-				<form class="" action="/register_student" method="post">
+
+				<form class="" action="/register" method="post">
 					<div class="row">
 
 						<div class="col-12 col-sm-6">
@@ -39,21 +36,20 @@
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="password"> Confirm Password </label>
-								<input type="password" class="form-control" name ="cpassword" id="cpasswd" value="" placeholder="Confirm Password">
+								<input type="password" class="form-control" name ="cpassword" id="cpasswd" value="" placeholder="Confirm Passwordnhj">
 							</div>
 						</div>
-						<div class="col-12 col-sm-6">
-							<div class="form-group">
-								<label for="mobile"> Mobile Phones </label>
-								<input type="text" class="form-control" name ="mobile" id="mobile" value="<?= set_value('mobile');?>" placeholder="Enter your Mobile phone ">
 
-							</div>
-						</div>
 						<div class="col-12">
 							 <div class="form-group">
-
-									<input type="hidden" name="role" value="Student">
-
+							    <label for="role">System Role</label>
+							    <select class="form-control form-control-lg" id="role" name='role'>
+							      <option class="col-12">Student</option>
+							      <option>Teacher</option>
+							      <option>Parent</option>
+							      <option>Staff</option>
+							      <option>Admin</option>
+							    </select>
 							  </div>
 						</div>
 						<?php if (isset($validation)): ?>
@@ -71,7 +67,5 @@
 
 
 				</form>
-</div>
-</div>
-</div>
+
 <?= $this->endSection() ?>

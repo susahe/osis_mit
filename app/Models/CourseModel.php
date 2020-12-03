@@ -6,7 +6,21 @@ use CodeIgniter\Model;
 
 class CourseModel extends Model {
   protected $table ='courses';
-  protected $primaryKey = 'idcourse';
-  protected $allowedFields = ['coursename','courseduraion','coursefees'];
+  protected $primaryKey = 'idcourses';
+  protected $allowedFields = ['csname','csentryqly','cstheryhrs','cspracthrs','csassinghrs','csprojecthrs','csfees','cstype','csperyear','csslug','csimage'];
 
+
+public function getCourses($slug=null){
+  if(!$slug){
+    return $this->findAll();
+  }
+
+  return $this->asArray()
+          ->where(['csslug'=>$slug])
+          ->first();
+}
+function getCountCourses(){
+
+return $query = $this->countAll() ;
+}
 }

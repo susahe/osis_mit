@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UserModel extends Model {
   protected $table ='users';
   protected $primaryKey = 'idusers';
-  protected $allowedFields = ['email','password','role','firstname','lastname'];
+  protected $allowedFields = ['email','password','role','firstname','lastname','slug'];
   protected $beforeInsert = ['beforeInsert'];
   protected $beforeUpdate = ['beforeUpdate'];
 
@@ -31,4 +31,17 @@ protected function beforeUpdate(array $data){
     return $data;
 
   }
+
+  public function getusers($slug = false)
+  {
+      if ($slug === false)
+      {
+          return $this->findAll();
+      }
+
+      return $this->asArray()
+                  ->where(['slug' => $slug])
+                  ->first();
+  }
+
 }

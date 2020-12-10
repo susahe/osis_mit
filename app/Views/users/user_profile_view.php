@@ -1,13 +1,10 @@
-<?= $this->extend('templates/main') ?>
-<?= $this->Section('content') ?>
+<?= $this->include('templates/header.php') ?>
 
 
-<div class="card">
-	<div class="card-header">
      <h3> <?= $user['firstname'].' '.$user['lastname']?> </h3>
-   </div>
 
-<div class="card-body">
+
+
 
 				<?php if (session()->get('sucess')): ?>
 				<div class="alert alert-success" role="alert">
@@ -33,13 +30,18 @@
 							</div>
 						</div>
 
-						<div class="col-12">
+						<div class="col-6">
 							<div class="form-group">
 								<label for="email"> Email address </label>
 								<input type="text" class="form-control" name ="email" readonly id="email" value="<?=$user['email'];?>">
 							</div>
 						</div>
-
+            <div class="col-6">
+              <div class="form-group">
+                <label for="email"> Phone Number </label>
+                <input type="text" class="form-control" name ="email" readonly id="email" value="<?=$user['email'];?>">
+              </div>
+            </div>
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
 								<label for="password"> Password </label>
@@ -56,8 +58,8 @@
 
 						<div class="col-12">
 							 <div class="form-group">
-							    <label for="role">System Role</label>
-							    <select class="form-control form-control-lg" id="role" name='role'>
+							    <label for="role" hidden >System Role</label>
+							    <select class="form-control form-control-lg" id="role" name='role' hidden>
 							      <option class="col-12">Student</option>
 							      <option>Teacher</option>
 							      <option>Parent</option>
@@ -84,5 +86,4 @@
 			</div>
 </div>
 		</div>
-
-  <?= $this->endSection() ?>
+<?= $this->include('templates/footer.php') ?>

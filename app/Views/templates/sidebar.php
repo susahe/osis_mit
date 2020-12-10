@@ -3,7 +3,7 @@
 
  ?>
 
-<nav class="col-md-2 d-none d-md-block bg-light sidebar t-m">
+
 
    <aside id="sidebar">
        <header class="navbar-header">
@@ -165,4 +165,3 @@
                  </li>
                </ul>
              <?php endif;?>
-</nav>

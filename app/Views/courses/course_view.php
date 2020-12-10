@@ -26,7 +26,7 @@
 
 		 </div>
 
-     <a href="#" class="btn btn-primary">Apply For Course</a>
+     <a href="/register_student" class="btn btn-primary">Apply For Course</a>
 
 </div>
 </div>

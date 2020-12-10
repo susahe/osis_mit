@@ -95,7 +95,7 @@
           <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item <?=($uri->getSegment(1)=='createcourse' ? 'active' : null )?>"">
-          <a class="nav-link" href="/createcourse">Create Course</a>
+          <a class="nav-link" href="/courses">Available Courses</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">

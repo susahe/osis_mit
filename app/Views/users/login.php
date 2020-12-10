@@ -13,7 +13,7 @@
 					<?php endif; ?>
 
 						<form class="form-signin" action="/" method="post">
-							<h5 class="h3 mb-3 font-weight-normal"> Login </h5>
+							<h4 class="h4 mb-3 font-weight-normal"> Login </h5>
 							<hr>
 								<div class="form-group">
 
@@ -39,7 +39,7 @@
 									</div>
 								</div>
 
-							
+
 
 
 						</form>

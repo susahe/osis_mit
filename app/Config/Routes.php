@@ -40,7 +40,7 @@ $routes->match(['get','post'],'verifycertificate', 'Certificate::verifycertifica
 $routes->match(['get','post'],'profile', 'Users::profile',['filter'=>'auth']);
 $routes->match(['get','post'],'students', 'Students::index',['filter'=>'auth']);
 $routes->match(['get','post'],'createcourse', 'Course::createcourse',['filter'=>'auth']);
-$routes->match(['get','post'],'courses', 'Course::index',['filter'=>'auth']);
+$routes->match(['get','post'],'courses', 'Course::courses',['filter'=>'auth']);
 $routes->get('dashboard', 'Dashboard::index',['filter'=>'auth']);
 $routes->get('slug_view/(:segment)', 'Students::slug_view/$1',['filter'=>'auth']);
 $routes->get('(:any)', 'Students::slug_view/$1',['filter'=>'auth']);

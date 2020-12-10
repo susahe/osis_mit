@@ -10,10 +10,17 @@ class Course extends BaseController
 		$model = new CourseModel();
 	 $data['courses']= $model->findAll();
 		//	echo var_dump($data);
-		return  view("courses/course_view",$data);
+		return  view("courses/courses_view",$data);
 		}
 
 
+public function courses()
+{
+	$model = new CourseModel();
+ $data['courses']= $model->findAll();
+	//	echo var_dump($data);
+	return  view("courses/courses",$data);
+}
 
 
 	public function createcourse()

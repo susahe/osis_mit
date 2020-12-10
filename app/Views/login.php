@@ -1,7 +1,7 @@
 
 <?= $this->extend('templates/out') ?>
 <?= $this->Section('content') ?>
-<div>
+
 
 				<h5> Login </h5>
 				<hr>
@@ -70,7 +70,7 @@
 
 						</form>
 
-</div>
+
 
 
 <?= $this->endSection() ?>

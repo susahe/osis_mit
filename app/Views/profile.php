@@ -2,10 +2,12 @@
 <?= $this->Section('content') ?>
 
 
+<div class="card">
+	<div class="card-header">
+     <h3> <?= $user['firstname'].' '.$user['lastname']?> </h3>
+   </div>
 
-<div role="main" class="col-md ml-sm-auto col-lg-10 pt-3 px-4">
-		<h3> <?= $user['firstname'].' '.$user['lastname']?> </h3>
-	<div class="d-flex justify-cotnet-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+<div class="card-body">
 
 				<?php if (session()->get('sucess')): ?>
 				<div class="alert alert-success" role="alert">
@@ -13,6 +15,7 @@
 					</div>
 							<?php endif; ?>
 				<hr>
+
 				<form class="" action="/profile" method="post">
 					<div class="row">
 
@@ -80,5 +83,6 @@
 				</form>
 			</div>
 </div>
-</div>
+		</div>
+
   <?= $this->endSection() ?>

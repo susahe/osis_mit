@@ -1,6 +1,8 @@
-<?= $this->include('templates/header.php') ?>
-
-
+<?= $this->extend('home/dashboard') ?>
+<?= $this->Section('content') ?>
+<div class="row">
+	<div class="col-12 cols-sm8 offset-sm2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white form-wrapper">
+		<div class="container">
      <h3> <?= $user['firstname'].' '.$user['lastname']?> </h3>
 
 
@@ -13,7 +15,7 @@
 							<?php endif; ?>
 				<hr>
 
-				<form class="" action="/profile" method="post">
+				<form class="" action="/edit_user" method="post">
 					<div class="row">
 
 						<div class="col-12 col-sm-6">
@@ -30,16 +32,16 @@
 							</div>
 						</div>
 
-						<div class="col-6">
+						<div class="col-12 col-sm-9">
 							<div class="form-group">
 								<label for="email"> Email address </label>
-								<input type="text" class="form-control" name ="email" readonly id="email" value="<?=$user['email'];?>">
+								<input type="email" class="form-control" name ="email" readonly id="email" value="<?=$user['email'];?>">
 							</div>
 						</div>
-            <div class="col-6">
+            <div class="col-12 col-sm-3">
               <div class="form-group">
                 <label for="email"> Phone Number </label>
-                <input type="text" class="form-control" name ="email" readonly id="email" value="<?=$user['email'];?>">
+                <input type="text" class="form-control" name ="mobile"  id="email" value="<?=$user['mobile'];?>">
               </div>
             </div>
 						<div class="col-12 col-sm-6">
@@ -56,7 +58,7 @@
 							</div>
 						</div>
 
-						<div class="col-12">
+						<div class="col-3">
 							 <div class="form-group">
 							    <label for="role" hidden >System Role</label>
 							    <select class="form-control form-control-lg" id="role" name='role' hidden>
@@ -77,8 +79,10 @@
 						<?php endif; ?>
 					</div>
 					<div class ="row">
-						<button type="submit" class="col-12 btn btn-primary">Update </button>
+          <div class="col-12">
+						<button type="submit" class="col-3 btn btn-primary float-right">Update </button>
 					</div>
+        </div>
 
 
 
@@ -86,4 +90,7 @@
 			</div>
 </div>
 		</div>
-<?= $this->include('templates/footer.php') ?>
+</div>
+</div>
+</div>
+<?= $this->endSection() ?>

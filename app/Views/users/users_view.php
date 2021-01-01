@@ -1,40 +1,67 @@
-<?= $this->include('templates/header') ?>
-<h1>Users View</h1>
+<?= $this->extend('home/dashboard') ?>
+<?= $this->Section('content') ?>
 
+<div class="pb-5">
+<a class="btn btn-secondary float-right" href="/create_user_system"> Create users </a>
+</div>
+<table class="table table-hover" >
 
-<table class="table" >
-
-   <thead class="thead-light">
+   <thead class="thead-dark">
 
   <tr>
       <th> ID# </th>
-      <th> First Name </th>
-      <th> Last Name </th>
 
-      <th> role </th>
+      <th> User's Name</th>
+
+      <th> E-mail </th>
+      <th> Contact No </th>
+<th> Last  Login </th>
+      <th> Role </th>
       <th> Created </th>
-      <th> Last login </th>
-      <th> email </th>
-      <th>action </th>
-      <th> Status </th>
+      <th> Update </th>
+      <th>Status </th>
+
   </tr>
 </thead>
 <tbody>
 
 <?php foreach($users as $user){ ?>
 <tr>
-  <td> <?= $user['idusers']?></td>
-  <td> <?= $user['firstname']?> </td>
-  <td> <?= $user['lastname']?>  </td>
+  <td><a class=" btn btn-primary " href="/admin_edit_users/<?=esc($user['slug'],'url');?>">  <?= $user['id']?></a></td>
+
+  <td> <a class=" " href="/admin_edit_users/<?=esc($user['slug'],'url');?>"> <?= $user['firstname']?>&nbsp;&nbsp; <?= $user['lastname']?></a> </td>
 
 
-  <td> <?= $user['role']?>  </td>
-  <td> <?= $user['created']?>  </td>
-  <td> <?= $user['lastlogin']?>  </td>
   <td> <?= $user['email']?>  </td>
-  <td> <a href=# ><?= $user['status']?></a>  </td>
-  <td> <a class=" btn btn-primary" href="/accept"> Edit
-	 <a class=" btn btn-primary " href="/user_profile_view/<?=esc($user['slug'],'url');?>"> View</a> </td>
+  <td> <?= $user['mobile']?>  </td>
+  <td> <?= $user['created']?> </td>
+  <td> <?= $user['update']?> </td>
+    <td> <?= $user['lastlogin']?> </td>
+  <td> <?= $user['role']?>  </td>
+
+
+
+
+<?php  if ($user['status']==0){
+
+   ?>
+
+  <td>
+    <a class="  " type="submit" href="/activate_user/<?=$user['id'];?>"><img class="userstatus" src="<?php echo base_url('img/inactive_user.png');?>"></a>
+
+
+  </td>
+
+<?php  }
+  else
+  { ?>
+    <td>
+    <a class="  " href="/deactivate_user/<?=$user['id'];?>"><img class="userstatus" src="<?php echo base_url('img/active_user.png');?>" ></a>
+
+
+    <form>
+      </td>
+  <?php }?>
 
 </tr>
 
@@ -43,5 +70,22 @@
 <?php } ?>
   </tbody>
 </table>
+</div>
+<?php if ($pager) :?>
 
-<?= $this->include('templates/footer') ?>
+
+  <?= $pager->links() ?>
+
+
+
+     <?php endif ?>
+
+
+
+
+
+
+
+
+
+<?= $this->endSection() ?>

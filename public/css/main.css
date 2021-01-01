@@ -30,5 +30,44 @@ body{
 }
 
 .pad{
-  margin-top:10px;
+  margin-top:60px;
+}
+
+.userstatus{
+  width:35px;
+  height:40px;
+}
+
+.coursetatus{
+  width:40px;
+  height:20px;
+
+}
+.cstype_yes{
+  background-color: #aabbcc;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cstype_yes:hover, .cstype_yes:active {
+  background-color: #bcbcab;
+}
+.avatar {
+
+  width: 30px;
+  height: 30px;
+  border-radius: 20%;
+}
+table td {
+   text-align: center;
+}
+.card img{
+  width:70%;
+  heigh:70%
+}
+.side{
+  background-color: #ffffff;
 }

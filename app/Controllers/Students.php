@@ -147,8 +147,9 @@ class Students extends BaseController
 											'installment'=> $this->request->getVar('installment'),
 											'addmision'=> 1
 										];
-
-										$studentno = '20'.session()->get('id');
+										$number = sprintf('%04d',$user_id);
+										$stdnumber = $time->getYear().$number;
+										$studentno = $stdnumber.session()->get('id');
 										$userdata=[
 												'id' => session()->get('id'),
 												'username' => $studentno,
@@ -175,7 +176,7 @@ class Students extends BaseController
 										$body=	$body = "You are Sucessfuly submit your course application ". " ".$data['courses']['csname']." ". " and your registration id is"." ".$studentno. "Your QR Code " ;
 										$this->mail->user_reg_sendmail($email,$subject,$body);
 
-										$message = "You areSucessfuly registred your Pre Registration Id is"." ".	$studentno;
+										$message = $subject." ".	$studentno;
 										$session= session();
 										$session->setFlashdata('sucess', $message);
 										$session->set('loginUser','Student');

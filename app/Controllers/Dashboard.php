@@ -29,22 +29,26 @@ class Dashboard extends BaseController
 				$loginUser = session()->get('loginUser');
 				$data['student_status']=$this->new_stdmodel->getStudent_status($id);
 				$session->set('student_status',$data['student_status']);
-			// print_r($data['student']);
+			 //print_r($data['student_status']);
 			//	print_r($loginUser);
 
 			$data['student_reg'] = $this->new_stdmodel->totl_num_registred_students();
 			 $data['student_active'] = $this->new_stdmodel->totl_num_active_students();
+			 	$data['is_application_submited'] = $this->new_stdmodel->is_submit_application($id);
 
 				if (($loginUser=="Student")&&($data['student_status']==1)) {
 					//$data['students'] = $this->new_stdmodel->get_newly_reg_students();
-				print_r($data['student_status']);
+				//print_r($data['student_status']);
 					//print_r($loginUser);
-					//	return  view("dashboard/student/student_dashboard",$data);
+							$data['enroled_courses'] = $this->csmodel->enrollCourses($id);
+							$data['student_user'] = $this->model->getUserById($id);
+						return  view("dashboard/student/student_dashboard",$data);
 						}
 
 				elseif ($loginUser=="Staff"){
+				$data['staff_user'] = $this->model->getUserById($id);
 				$data['students'] = $this->new_stdmodel->get_newly_reg_students();
-	 		  return  view("dashboard/student/staff_dashboard",$data);
+	 		  return  view("dashboard/staff/staff_dashboard",$data);
 
 				}
 
@@ -67,7 +71,7 @@ class Dashboard extends BaseController
 				}
 				else{
 					$data['guest_user'] = $this->model->getUserById($id);
-					$data['is_application_submited'] = $this->new_stdmodel->is_submit_application($id);
+
 					print_r($data['student_reg']);
 
 					return  view("dashboard/guest/guest_dashboard",$data);

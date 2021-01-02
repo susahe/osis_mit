@@ -29,10 +29,16 @@ class StudentModel extends Model {
 {
 
 
-    return $this->asArray()->select('status')
+    $status= $this->asArray()->select('status')
                 ->where(['user' => $id])
+                ->where('status',1)
                 ->first();
-
+    if ($status){
+      return 1;
+    }
+    else{
+      return 0;
+    }
 
 }
 

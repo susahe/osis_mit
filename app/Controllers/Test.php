@@ -1,4 +1,4 @@
-<?php namespace App\Controllers\Test;
+<?php namespace App\Controllers;
 use App\Models\Users\UserModel;
 use App\Models\Test\TestModel;
 use App\Models\Custom;
@@ -20,24 +20,28 @@ class Test extends BaseController
 	public function __construct()
 						{
 							helper('form');
-							$this->model = new TestModel();
-							$this->mail = new Send_Mail();
-							$this->curd = new Curd();
-							$this->test = new TestModel();
+							// $this->model = new TestModel();
+							// $this->mail = new Send_Mail();
+							// $this->curd = new Curd();
+							// $this->test = new TestModel();
 
 						}
 
 public function  index()
 {
-		// $data=[];
-		 $data['users']= 	$this->model->getuser_from_id(1);
-		// print_r($data);
+	// 	// $data=[];
+	// 	 $data['users']= 	$this->model->getuser_from_id(1);
+	// 	// print_r($data);
+	//
+	// //echo view('test/test',$data);
+	// // Create a basic QR code
+	//
+	//
+  // echo $data['users']['firstname']." ".$data['users']['lastname'];
 
-	//echo view('test/test',$data);
-	// Create a basic QR code
 
-
-  echo $data['users']['firstname']." ".$data['users']['lastname'];
+	$qrcode = new QrReader('path/to_image');
+	$text = $qrcode->text(); //return decoded text from QR Code
 
 }
 public function create_student()

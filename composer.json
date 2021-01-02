@@ -14,8 +14,7 @@
 		"laminas/laminas-escaper": "^2.6",
 		"psr/log": "^1.1",
 		"tatter/assets": "^2.2",
-		"khanamiryan/qrcode-detector-decoder": "^1.0",
-		"endroid/qr-code": "^3.9"
+		"chillerlan/php-qrcode": "^4.3"
 	},
 	"require-dev": {
 		"codeigniter4/codeigniter4-standard": "^1.0",

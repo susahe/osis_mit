@@ -30,6 +30,7 @@ class Users extends BaseController
 										];
 
 							//	echo var_dump($data);
+							
 							echo view("users/users_view",$data);
 						}
 
@@ -419,4 +420,19 @@ class Users extends BaseController
 									$data['user']=$this->model->where('id',session()->get('id'))->first();
 									return view("users/user_profile_view",$data);
 				}
+
+				public function search(){
+
+        $search=$this->request->getVar('search');
+        $db= \Config\Database::connect();
+        $builder = $db->table('users');
+       $builder->like('firstname',$search);
+			 $builder->orLike('lastname',$search);
+      $query=$builder->get();
+        $q=$query->getResultArray();
+
+    $data['r']=$q;
+
+    return view('users/users_view',$data);
+}
 }

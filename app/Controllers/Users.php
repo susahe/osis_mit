@@ -30,7 +30,7 @@ class Users extends BaseController
 										];
 
 							//	echo var_dump($data);
-							
+
 							echo view("users/users_view",$data);
 						}
 
@@ -435,4 +435,109 @@ class Users extends BaseController
 
     return view('users/users_view',$data);
 }
+
+
+public function create_person_profile()
+{
+	$data=[];
+		$rest = session()->get('cs');
+
+	if ($this->request->getMethod()=='post')
+	{
+	$rules=[
+		'address'=> 'required|min_length[3]|max_length[255]',
+		'gender'=> 'required',
+		'nic'=> 'required',
+		'birthdate'=>'required',
+		'installment'=>'required',
+		'qulification' => 'required'
+
+];
+
+		if (! $this->validate($rules)){
+
+		$data['validation']= $this->validator;
+	}
+	 else
+		{
+
+
+			//	$model = new UserModel();
+		$newdata = [
+			'user' => session()->get('id'),
+			'address' => $this->request->getVar('address'),
+		'gender' => $this->request->getVar('gender'),
+			'nic' => $this->request->getVar('nic'),
+			'birthdate' => $this->request->getVar('birthdate'),
+		'hometel' => $this->request->getVar('birthdate'),
+
+		];
+		$coursedata=[
+			'user'=>session()->get('id'),
+			'course'=>2,
+		];
+
+		$stddata =[
+			'user' => session()->get('id'),
+			'installment'=> $this->request->getVar('installment'),
+			'addmision'=> 1
+		];
+
+		$user_id = session()->get('id');
+		$myTime = new Time('now');
+		$time = Time::parse($myTime);
+		$number = sprintf('%04d',$user_id);
+		$studentno = $time->getYear().$number;
+
+
+		$userdata=[
+				'id' => session()->get('id'),
+				'username' => $studentno,
+				'role' => "Student",
+		];
+		$this->enroll->save($coursedata);
+		$person = new PersonModel();
+		$person->save($newdata);
+		$this->studentmodel->insert($newdata);
+		$this->model->save($userdata);
+	//$this->enroll->insert($coursedata);
+
+		// if (session()->get('is_parent')==1){
+		// 	$body = "You Child/ Slibling has Sucessfuly Apply for the Course ". " ".$data['courses']['csname']." ". " and your registration id is"." ".$studentno. "Your QR Code " ;
+		// }
+		// else{
+		//
+		// }
+		$user_id = $this->model->getInsertID();
+		$email = session()->get('email');
+		$myTime = new Time('now');
+
+		$subject = "Application has submited successfully" ;
+		$body=	$body = "You are Sucessfuly submit your course application ". " ".$data['courses']['csname']." ". " and your registration id is"." ".$studentno. "Your QR Code " ;
+		$this->mail->user_reg_sendmail($email,$subject,$body);
+
+		$message = $subject." ".	$studentno;
+		$session= session();
+		$session->setFlashdata('sucess', $message);
+		$session->set('loginUser','Student');
+
+	return redirect()->to('/dashboard');
+	 }
+ }
+
+ $myTime = new Time('now');
+ $time = Time::parse($myTime);
+ $year = $time->getYear()-4;
+ $data['bdate']= '2017-12-31';
+	$data['user']=$this->model->where('id',session()->get('id'))->first();
+return view("/users/user_personal_profile",$data);
+}
+
+public function profile_person_view()
+{
+	return redirect()->to('/create_person_profile');
+
+
+}
+
 }

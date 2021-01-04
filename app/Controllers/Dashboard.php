@@ -73,7 +73,8 @@ class Dashboard extends BaseController
 					$data['guest_user'] = $this->model->getUserById($id);
 
 					print_r($data['student_reg']);
-
+					$session= session();
+					$session->setFlashdata('danger', "Before you have to proceed you have to fill your profile page");
 					return  view("dashboard/guest/guest_dashboard",$data);
 				}
 

@@ -47,6 +47,15 @@ $routes->get('logout', 'Home::logout',['filter'=>'auth']);
 $routes->get('/dashboard', 'Dashboard::index',['filter'=>'auth']);
 $routes->match(['get','post'],'/course_select/(:num)', 'Dashboard::course_select/$1');
 
+//-----------------------------
+// Person profile
+//------------------------------
+$routes->get('/create_person_profile', 'Users::create_person_profile',['filter'=>'auth']);
+$routes->match(['get','post'],'/profile_person_view', 'Users::profile_person_view',['filter'=>'auth']);
+
+
+
+
 //----------------------------
 // Guest
 //---------------------------

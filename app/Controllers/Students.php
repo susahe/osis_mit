@@ -147,9 +147,14 @@ class Students extends BaseController
 											'installment'=> $this->request->getVar('installment'),
 											'addmision'=> 1
 										];
+
+										$user_id = session()->get('id');
+										$myTime = new Time('now');
+										$time = Time::parse($myTime);
 										$number = sprintf('%04d',$user_id);
-										$stdnumber = $time->getYear().$number;
-										$studentno = $stdnumber.session()->get('id');
+										$studentno = $time->getYear().$number;
+
+
 										$userdata=[
 												'id' => session()->get('id'),
 												'username' => $studentno,

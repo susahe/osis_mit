@@ -1,7 +1,9 @@
 <?= $this->extend('home/dashboard') ?>
 <?= $this->Section('content') ?>
 
-
+<div class="pb-5">
+<a class="btn btn-secondary float-right" href="/create_course"> Create Course </a>
+</div>
 <table class="table" >
 
    <thead class="thead-light">

@@ -1,20 +1,20 @@
-<?php namespace App\Models;
+<?php namespace App\Models\User;
 
 use CodeIgniter\Model;
 
 
 
 
-class UserModel extends Model
+class PersonModel extends Model
   {
 
-    protected $table ='users';
+    protected $table ='person';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['email','password','role','firstname','lastname','slug','mobile','status','update'];
+    protected $allowedFields = ['user','address','gender','nic','birthdate','hometel','slug','status','update','username'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
-  
+
 
 
 
@@ -32,6 +32,37 @@ class UserModel extends Model
        $data = $this->passwordHash($data);
        return $data;
       }
+
+
+
+
+      public function getParent_status($id)
+
+      {
+
+        $this->select('status');
+        $this->where('user',$id);
+        $parent = $this->get()->getResultArray();
+        return $parent;
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     protected function passwordHash(array $data)
@@ -53,12 +84,41 @@ class UserModel extends Model
                       ->first();
        }
 
+       public function getuser_from_email($email)
+       {
+           if ($email)
+           {
+
+                  return $this->asArray()->select('id,email,status,firstname,lastname')
+                       ->where(['email' => $email])
+                       ->first();
+        }
+      }
+
        public function getUserStatusById($id){
 
           return $this->db->table($this->table)
                 ->where('id',$id)
                 ->get()
                 ->getRow();
+
+       }
+
+       public function update_lastlogin(array $data)
+       {
+
+
+       }
+
+       // create personal details
+       public function personal_details_add()
+       {
+
+       }
+
+       // update person details
+       public function personal_details_edit()
+       {
 
        }
 

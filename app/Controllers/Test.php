@@ -1,9 +1,15 @@
 <?php namespace App\Controllers;
-use App\Models\UserModel;
-use App\Models\TestModel;
+use App\Models\Users\UserModel;
+use App\Models\Test\TestModel;
+use App\Models\Custom;
 use App\Libraries\Curd;
 use App\Libraries\Send_Mail;
 use CodeIgniter\I18n\Time;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\LabelAlignment;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Response\QrCodeResponse;
+
 class Test extends BaseController
 {
 	private $model;
@@ -14,20 +20,28 @@ class Test extends BaseController
 	public function __construct()
 						{
 							helper('form');
-							$this->model = new UserModel();
-							$this->mail = new Send_Mail();
-							$this->curd = new Curd();
-							$this->test = new TestModel();
-							helper('date');
+							// $this->model = new TestModel();
+							// $this->mail = new Send_Mail();
+							// $this->curd = new Curd();
+							// $this->test = new TestModel();
+
 						}
 
 public function  index()
 {
-		$data=[];
-		$data['student']= $this->test->findAll();
-		print_r($data);
+	// 	// $data=[];
+	// 	 $data['users']= 	$this->model->getuser_from_id(1);
+	// 	// print_r($data);
+	//
+	// //echo view('test/test',$data);
+	// // Create a basic QR code
+	//
+	//
+  // echo $data['users']['firstname']." ".$data['users']['lastname'];
 
-	//echo view('test/test',$data);
+
+	$qrcode = new QrReader('path/to_image');
+	$text = $qrcode->text(); //return decoded text from QR Code
 
 }
 public function create_student()
@@ -109,5 +123,60 @@ public function create_user()
 						$this->curd->change_status($id,$model);
 						return redirect()->to('/view_users');
 			}
+
+
+			public function edit_user(){
+
+						$data=[];
+						helper('form');
+							$model = new UserModel();
+						if ($this->request->getMethod()=='post')
+						{
+							$rules=[
+								'firstname'=> 'required|min_length[3]|max_length[20]',
+								'lastname'=> 'required|min_length[3]|max_length[20]',
+							];
+							if ($this->request->getPost('password')!=''){
+								$rules['password']= 'required|min_length[3]|max_length[20]';
+								$rules['cpassword']= 'matches[password]';
+							}
+
+						 if (! $this->validate($rules)){
+
+							$data['validation']= $this->validator;
+						}
+						 else
+							{
+
+
+							$newdata = [
+								'idusers' => session()->get('id'),
+								'role' => $this->request->getPost('role'),
+								'firstname' => $this->request->getPost('firstname'),
+								'lastname' => $this->request->getPost('lastname'),
+								'email' => $this->request->getVar('email'),
+								'mobile'=> $this->request->getVar('mobile'),
+								'slug' => url_title($this->request->getVar('email')),
+								'update' => date('Y-m-d H:i:s',now()),
+							];
+
+				if ($this->request->getPost('password')!=''){
+					$newdata['password']= $this->request->getPost('password');
+				}
+
+
+						//	echo var_dump($newdata);
+							//$model->update(session()->get('id'),$newdata);
+						//	$model->update($newdata['idusers'], $newdata);
+							$model->save($newdata);
+							session()->setFlashdata('sucess', 'Sucessfully Updated');
+							return redirect()->to('/');
+						 }
+						}
+						$data['user']=$model->where('idusers',session()->get('id'))->first();
+
+
+						return view("users/user_profile_view",$data);
+	}
 
 }

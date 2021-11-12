@@ -3,7 +3,7 @@
 
 
 <div class="row">
-	<div class="col-12 cols-sm8 offset-sm2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white form-wrapper">
+	<div class="">
 		<div class="container">
      <h3> <?= $user['firstname'].' '.$user['lastname']?> </h3>
 
@@ -17,7 +17,7 @@
 							<?php endif; ?>
 				<hr>
 
-				<form class="" action="" method="post">
+				<form class="" action="/edit_user" method="post">
 					<div class="row">
 
 						<div class="col-12 col-sm-6">
@@ -60,18 +60,7 @@
 							</div>
 						</div>
 
-						<div class="col-3">
-							 <div class="form-group">
-							    <label for="role" hidden >System Role</label>
-							    <select class="form-control form-control-lg" id="role" name='role' hidden>
-							      <option class="col-12">Student</option>
-							      <option>Teacher</option>
-							      <option>Parent</option>
-							      <option>Staff</option>
-							      <option>Admin</option>
-							    </select>
-							  </div>
-						</div>
+					
 						<?php if (isset($validation)): ?>
 						<div class="col-12">
 							<div class="alert alert-danger" role="alert">
@@ -82,7 +71,7 @@
 					</div>
 					<div class ="row">
           <div class="col-12">
-						<a type="submit" class="col-3 btn btn-primary float-right" href="edit_user">Edit </a>
+						<input type="submit" class="col-3 btn btn-primary float-right" value="Update">
 					</div>
         </div>
 

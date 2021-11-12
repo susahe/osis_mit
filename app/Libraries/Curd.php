@@ -82,6 +82,23 @@ public function change_status($id,$stat,$message,$model)
 
       }
 
+      public function update_lastlogin($id,$model)
+          {
+              $newdata=[];
+
+
+               $newdata =
+                       [
+                         'id'  =>$id,
+                         'lastlogin' => date('Y-m-d H:i:s',now()),
+
+                       ];
+
+
+                        $model->save($newdata);
+                        session()->setFlashdata('sucess');
+
+            }
 
 
 

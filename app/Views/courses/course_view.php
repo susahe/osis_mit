@@ -1,4 +1,6 @@
-<?= $this->include('templates/header') ?>
+<?= $this->extend('home/dashboard') ?>
+<?= $this->Section('content') ?>
+
 <h1>Course View</h1>
 <?php if (session()->get('sucess')): ?>
 <div class="alert alert-success" role="alert">
@@ -19,8 +21,9 @@
  <?= $course['csperyear']?>
 
 
+<a href="" > Apply for the Course </a>
 
 
 
 
-<?= $this->include('templates/footer') ?>
+<?= $this->endSection() ?>

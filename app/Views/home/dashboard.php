@@ -2,7 +2,7 @@
 
 <?= $this->include('templates/nav') ?>
 
-
+<div class="pad">
 <header id="header">
   <div class="container-fluid">
       <div class="row">
@@ -14,6 +14,7 @@
 
       </div>
   </div>
+</div>
 </header>
 
 
@@ -21,13 +22,13 @@
 <section id="main">
   <div class="container-fluid" >
     <div class="row">
-      <div class="col-lg-2">
+      <div class="cols-12 col-lg-2 shadow-sm p-3 mb-5 bg-white">
 
           <?= $this->include('templates/side') ?>
 
       </div>
 
-          <div class="col-lg-10">
+          <div class="cols-12 col-lg-10">
             <div class="row">
               <div class="col-sm-12">
 
@@ -37,7 +38,7 @@
                   </div>
                 <?php endif; ?>
 
-                
+
 
                 <?= $this->renderSection('content') ?>
 
@@ -50,4 +51,5 @@
 
 </div>
 </section>
+</div>
 <?= $this->include('templates/footer') ?>

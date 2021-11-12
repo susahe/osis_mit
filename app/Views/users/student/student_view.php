@@ -1,7 +1,9 @@
 <?= $this->extend('home/dashboard') ?>
 <?= $this->Section('content') ?>
 
-
+<div class="pb-5">
+<a class="btn btn-secondary float-right" href="/create_user_system"> Create Student </a>
+</div>
 <table class="table" >
 
    <thead class="thead-light">
@@ -11,8 +13,8 @@
       <th> Created </th>
       <th> Update </th>
       <th>Address </th>
-      <th>Days </th>
-      <th>Time </th>
+
+  
       <th>Status </th>
   </tr>
 </thead>
@@ -25,9 +27,8 @@
   <td><a class=" btn btn-primary " href="/user_profile_view/<?=esc($user['slug'],'url');?>">  <?= $user['id']?></a></td>
   <td> <?= $user['created']?></td>
   <td> <?= $user['update']?></td>
-  <td> <?= $user['address']?></td>
-  <td> <?= $user['days']?></td>
-  <td> <?= $user['time']?></td>
+
+
   <td> <?= $user['firstname']?></td>
   <td> <?= $user['lastname']?> </td>
 <?php  if ($user['status']==0){

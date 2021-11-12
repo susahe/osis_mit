@@ -1,4 +1,6 @@
-<?= $this->include('templates/header') ?>
+<?= $this->extend('home/dashboard') ?>
+<?= $this->Section('content') ?>
+
 <div class="row">
 	<div class="col-12 cols-sm8 offset-sm2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white form-wrapper">
 		<div class="container">
@@ -27,7 +29,7 @@
 							</div>
 						</div>
 
-					
+
 
 						<div class="col-12 col-sm-6">
 							<div class="form-group">
@@ -82,4 +84,4 @@
 
 </div>
 
-<?= $this->include('templates/footer') ?>
+<?= $this->endSection() ?>

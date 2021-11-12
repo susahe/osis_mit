@@ -1,5 +1,12 @@
-  <?= $this->include('templates/header') ?>
+<?= $this->include('templates/header') ?>
 
+<div class="container">
+	<div class="row">
+			<div class="col-lg-9">
+
+			</div>
+			<div class="col-lg-3">
+				<div class="row">
 				<h5> Login </h5>
 				<hr>
 					<?php if (session()->get('sucess')): ?>
@@ -66,4 +73,9 @@
 
 
 						</form>
+</div>
+</div>
+</div>
+</div>
+
 <?= $this->include('templates/footer') ?>

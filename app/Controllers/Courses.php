@@ -1,5 +1,5 @@
 <?php namespace App\Controllers;
-use App\Models\CourseModel;
+use App\Models\Course\CourseModel;
 use App\Libraries\Curd;
 use App\Libraries\Send_Mail;
 use CodeIgniter\I18n\Time;
@@ -8,6 +8,7 @@ class Courses extends BaseController
 	private $model;
 
 	private $mail;
+
 	public function __construct()
 
 	{
@@ -24,7 +25,7 @@ class Courses extends BaseController
 		$model = new CourseModel();
 	 $data['courses']= $model->findAll();
 		//	echo var_dump($data);
-		return  view("courses/courses_view",$data);
+		return  view("courses/admin/courses_view_admin",$data);
 
 		// echo view("courses/course_view",$data);
 	}
@@ -50,6 +51,7 @@ class Courses extends BaseController
 		{
 		$rules=[
 			'csname'=> 'required|min_length[3]|max_length[255]',
+			'cscode'=> 'required',
 			'cstheryhrs'=> 'required',
 			'cspracthrs'=> 'required',
 
@@ -96,7 +98,7 @@ class Courses extends BaseController
 		return redirect()->to('/courses');
 	 }
 }
-	return  view("courses/create_course",$data);
+	return  view("courses/admin/create_course_admin",$data);
 
 	}
 
